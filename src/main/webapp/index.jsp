@@ -34,7 +34,7 @@
     </div>
     <div class="row">
         <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="${video.path}" allowfullscreen style="width: 70%; height: 70%"></iframe>
+            <iframe class="embed-responsive-item" src="${video.path}" allowfullscreen ></iframe>
         </div>
     </div>
     <div class="row">
