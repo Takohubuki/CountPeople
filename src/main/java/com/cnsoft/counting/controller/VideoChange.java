@@ -1,6 +1,7 @@
 package com.cnsoft.counting.controller;
 
 import com.cnsoft.counting.bean.Video;
+import com.cnsoft.counting.bean.WarningInfo;
 import com.cnsoft.counting.mappers.VideoMapper;
 import com.cnsoft.counting.mappers.WarningInfoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RequestMapping("/change")
 @Controller
@@ -23,11 +25,11 @@ public class VideoChange {
     @RequestMapping("spot01")
     public String spot01(Model model, HttpSession session){
 //        Video video = new Video();
-        Video video = videoMapper.selectByTimeAndSpot("01");
 //        video.setPath("video/4.mp4");
+        Video video = videoMapper.selectByTimeAndSpot("01");
         session.setAttribute("video",video);
-
-
+        List<WarningInfo> warninglist = warningInfoMapper.selectByVideo(video.getId());
+        session.setAttribute("warninglist",warninglist);
         return "redirect:/index.jsp";
     }
 
@@ -37,6 +39,8 @@ public class VideoChange {
 //        video.setPath("video/5.mp4");
         Video video = videoMapper.selectByTimeAndSpot("02");
         session.setAttribute("video",video);
+        List<WarningInfo> warninglist = warningInfoMapper.selectByVideo(video.getId());
+        session.setAttribute("warninglist",warninglist);
         return "redirect:/index.jsp";
     }
 
@@ -46,6 +50,8 @@ public class VideoChange {
 //        video.setPath("video/6.mp4");
         Video video = videoMapper.selectByTimeAndSpot("03");
         session.setAttribute("video",video);
+        List<WarningInfo> warninglist = warningInfoMapper.selectByVideo(video.getId());
+        session.setAttribute("warninglist",warninglist);
         return "redirect:/index.jsp";
     }
 }

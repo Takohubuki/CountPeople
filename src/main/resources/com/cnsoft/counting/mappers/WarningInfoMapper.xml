@@ -1,192 +1,181 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cnsoft.counting.mappers.WarningInfoMapper">
-  <resultMap id="BaseResultMap" type="com.cnsoft.counting.bean.WarningInfo">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="video_id" jdbcType="VARCHAR" property="video_id" />
-    <result column="warning_start" jdbcType="VARCHAR" property="warning_start" />
-    <result column="warning_end" jdbcType="VARCHAR" property="warning_end" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+    <resultMap id="BaseResultMap" type="com.cnsoft.counting.bean.WarningInfo">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="video_id" jdbcType="VARCHAR" property="video_id" />
+        <result column="warning_start" jdbcType="VARCHAR" property="warning_start" />
+        <result column="warning_end" jdbcType="VARCHAR" property="warning_end" />
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
     id, video_id, warning_start, warning_end
   </sql>
-  <select id="selectByExample" parameterType="com.cnsoft.counting.bean.WarningInfoExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from warning_info
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
+    <select id="selectByVideo" resultMap="BaseResultMap">
+    select * from warninginfo where video_id=#{video_id}
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from warning_info
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from warning_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from warning_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.cnsoft.counting.bean.WarningInfoExample">
-    delete from warning_info
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.cnsoft.counting.bean.WarningInfo">
+    <delete id="deleteByExample" parameterType="com.cnsoft.counting.bean.WarningInfoExample">
+        delete from warning_info
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.cnsoft.counting.bean.WarningInfo">
     insert into warning_info (id, video_id, warning_start, 
       warning_end)
     values (#{id,jdbcType=INTEGER}, #{video_id,jdbcType=VARCHAR}, #{warning_start,jdbcType=VARCHAR}, 
       #{warning_end,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.cnsoft.counting.bean.WarningInfo">
-    insert into warning_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="video_id != null">
-        video_id,
-      </if>
-      <if test="warning_start != null">
-        warning_start,
-      </if>
-      <if test="warning_end != null">
-        warning_end,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="video_id != null">
-        #{video_id,jdbcType=VARCHAR},
-      </if>
-      <if test="warning_start != null">
-        #{warning_start,jdbcType=VARCHAR},
-      </if>
-      <if test="warning_end != null">
-        #{warning_end,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.cnsoft.counting.bean.WarningInfoExample" resultType="java.lang.Long">
-    select count(*) from warning_info
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update warning_info
-    <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
-      <if test="record.video_id != null">
+    <insert id="insertSelective" parameterType="com.cnsoft.counting.bean.WarningInfo">
+        insert into warning_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="video_id != null">
+                video_id,
+            </if>
+            <if test="warning_start != null">
+                warning_start,
+            </if>
+            <if test="warning_end != null">
+                warning_end,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="video_id != null">
+                #{video_id,jdbcType=VARCHAR},
+            </if>
+            <if test="warning_start != null">
+                #{warning_start,jdbcType=VARCHAR},
+            </if>
+            <if test="warning_end != null">
+                #{warning_end,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.cnsoft.counting.bean.WarningInfoExample" resultType="java.lang.Long">
+        select count(*) from warning_info
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update warning_info
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=INTEGER},
+            </if>
+            <if test="record.video_id != null">
+                video_id = #{record.video_id,jdbcType=VARCHAR},
+            </if>
+            <if test="record.warning_start != null">
+                warning_start = #{record.warning_start,jdbcType=VARCHAR},
+            </if>
+            <if test="record.warning_end != null">
+                warning_end = #{record.warning_end,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update warning_info
+        set id = #{record.id,jdbcType=INTEGER},
         video_id = #{record.video_id,jdbcType=VARCHAR},
-      </if>
-      <if test="record.warning_start != null">
         warning_start = #{record.warning_start,jdbcType=VARCHAR},
-      </if>
-      <if test="record.warning_end != null">
-        warning_end = #{record.warning_end,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update warning_info
-    set id = #{record.id,jdbcType=INTEGER},
-      video_id = #{record.video_id,jdbcType=VARCHAR},
-      warning_start = #{record.warning_start,jdbcType=VARCHAR},
-      warning_end = #{record.warning_end,jdbcType=VARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.cnsoft.counting.bean.WarningInfo">
-    update warning_info
-    <set>
-      <if test="video_id != null">
-        video_id = #{video_id,jdbcType=VARCHAR},
-      </if>
-      <if test="warning_start != null">
-        warning_start = #{warning_start,jdbcType=VARCHAR},
-      </if>
-      <if test="warning_end != null">
-        warning_end = #{warning_end,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.cnsoft.counting.bean.WarningInfo">
+        warning_end = #{record.warning_end,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.cnsoft.counting.bean.WarningInfo">
+        update warning_info
+        <set>
+            <if test="video_id != null">
+                video_id = #{video_id,jdbcType=VARCHAR},
+            </if>
+            <if test="warning_start != null">
+                warning_start = #{warning_start,jdbcType=VARCHAR},
+            </if>
+            <if test="warning_end != null">
+                warning_end = #{warning_end,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.cnsoft.counting.bean.WarningInfo">
     update warning_info
     set video_id = #{video_id,jdbcType=VARCHAR},
       warning_start = #{warning_start,jdbcType=VARCHAR},

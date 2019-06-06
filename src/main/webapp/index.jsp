@@ -1,4 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" isELIgnored="false" %>
 <html>
 <head>
@@ -39,7 +41,18 @@
     </div>
     <div class="row">
         <div id="warning-info">
-
+            拍摄时间：${video.captured_time}<br>
+            拍摄地点：${video.captured_spot}<br>
+            <c:if test="${warning_info == null}">
+                当前视频没有异常
+            </c:if>
+            <c:if test="${warning_info != null}">
+                当前视频异常<br>
+                有${fn:length(warninglist)}个异常：
+                <c:forEach var="warninglist" items="${warninglist}">
+                    ${warninglist.warning_start}--${warninglist.warning_end}<br>
+                </c:forEach>
+            </c:if>
         </div>
     </div>
 </div>

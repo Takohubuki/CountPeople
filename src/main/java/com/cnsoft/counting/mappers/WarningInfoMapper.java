@@ -16,7 +16,7 @@ public interface WarningInfoMapper {
 
     int insertSelective(WarningInfo record);
 
-    List<WarningInfo> selectByExample(WarningInfoExample example);
+    List<WarningInfo> selectByVideo(String video_id);
 
     WarningInfo selectByPrimaryKey(Integer id);
 
