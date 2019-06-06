@@ -69,6 +69,18 @@
   <sql id="Base_Column_List">
     id, path, threshold, captured_time, captured_spot
   </sql>
+
+  <select id="selectByTimeAndSpot" resultType="com.cnsoft.counting.bean.Video">
+    select
+        path,captured_time
+    from
+        video
+    where
+        captured_spot=#{spot}
+    ORDER BY
+        captured_time DESC
+    limit 1
+  </select>
   <select id="selectByExample" parameterType="com.cnsoft.counting.bean.VideoExample" resultMap="BaseResultMap">
     select
     <if test="distinct">

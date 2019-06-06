@@ -4,6 +4,8 @@ import com.cnsoft.counting.bean.Video;
 import com.cnsoft.counting.bean.VideoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Service;
+
 
 public interface VideoMapper {
     long countByExample(VideoExample example);
@@ -27,4 +29,6 @@ public interface VideoMapper {
     int updateByPrimaryKeySelective(Video record);
 
     int updateByPrimaryKey(Video record);
+
+    Video selectByTimeAndSpot(String spot);
 }
