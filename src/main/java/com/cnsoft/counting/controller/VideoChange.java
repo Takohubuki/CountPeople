@@ -61,4 +61,9 @@ public class VideoChange {
         session.setAttribute("historywarning",warningInfos);
         return "history_warnings";
     }
+
+    @RequestMapping("/index")
+    public String index(){
+        return "redirect:/index.jsp";
+    }
 }

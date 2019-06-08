@@ -25,7 +25,7 @@
     <div class="row">
 
         <div class="mx-auto">
-            <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/change/spot01" role="button">返回首页</a>
+            <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/change/index" role="button">返回首页</a>
         </div>
     </div>
     <div class="row">

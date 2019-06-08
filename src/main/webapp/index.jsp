@@ -35,10 +35,12 @@
     </div>
     <div class="row">
         <div class="embed-responsive embed-responsive-16by9">
-            <video class="embed-responsive-item" src="${video.path}">
-                <source href="${video.path}">
-            </video>
+            <iframe class="embed-responsive-item" src="${video.path}" allowfullscreen></iframe>
         </div>
+<%--            <video class="embed-responsive-item" src="${video.path}">--%>
+<%--                <source href="${video.path}">--%>
+<%--            </video>--%>
+
     </div>
     <div class="row">
         <div id="warning-info" class="col-md-6">
@@ -56,7 +58,10 @@
             </c:if>
         </div>
         <div class="col-md-6">
-            <a href="/change/history" class="btn btn-primary btn-lg" role="button">查看历史警报信息</a>
+            <div class="mx-auto">
+
+                <a href="/change/history" class="btn btn-primary btn-lg" role="button">查看历史警报信息</a>
+            </div>
         </div>
     </div>
 </div>
