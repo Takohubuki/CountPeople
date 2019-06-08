@@ -54,4 +54,10 @@ public class VideoChange {
         session.setAttribute("warninglist",warninglist);
         return "redirect:/index.jsp";
     }
+
+    @RequestMapping("/history")
+    public String history(){
+
+        return "history_warnings";
+    }
 }

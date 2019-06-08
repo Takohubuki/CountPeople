@@ -1,5 +1,4 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" isELIgnored="false" %>
 <html>
@@ -40,7 +39,7 @@
         </div>
     </div>
     <div class="row">
-        <div id="warning-info">
+        <div id="warning-info" class="col-md-6">
             拍摄时间：${video.captured_time}<br>
             拍摄地点：${video.captured_spot}<br>
             <c:if test="${warning_info == null}">
@@ -53,6 +52,9 @@
                     ${warninglist.warning_start}--${warninglist.warning_end}<br>
                 </c:forEach>
             </c:if>
+        </div>
+        <div class="col-md-6">
+            <a href="/change/history" class="btn btm-primary">查看历史警报信息</a>
         </div>
     </div>
 </div>
