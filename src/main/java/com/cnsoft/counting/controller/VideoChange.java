@@ -56,8 +56,9 @@ public class VideoChange {
     }
 
     @RequestMapping("/history")
-    public String history(){
-
+    public String history(HttpSession session){
+        List<WarningInfo> warningInfos = warningInfoMapper.selectWarningsAndVideo();
+        session.setAttribute("historywarning",warningInfos);
         return "history_warnings";
     }
 }

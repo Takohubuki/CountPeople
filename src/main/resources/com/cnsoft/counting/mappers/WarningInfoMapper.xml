@@ -7,6 +7,25 @@
         <result column="warning_start" jdbcType="VARCHAR" property="warning_start" />
         <result column="warning_end" jdbcType="VARCHAR" property="warning_end" />
     </resultMap>
+
+<!--    <resultMap id="warnAndVideo" type="com.cnsoft.counting.bean.WarningInfo">-->
+<!--        <id column="id" property="id"/>-->
+<!--        <result column="video_id" property="video_id"/>-->
+<!--        <collection property="warningInfo" column="video_id" ofType="WarningInfo">-->
+<!--            <id property="id" column="video_id"/>-->
+<!--            <result property="captured_spot" column="captured_spot"/>-->
+<!--            <result property="captured_time" column="captured_time"/>-->
+<!--        </collection>-->
+<!--    </resultMap>-->
+    
+    <resultMap id="warning2video" type="com.cnsoft.counting.bean.WarningInfo">
+        <id column="id" property="id"/>
+        <result property="video_id" column="video_id"/>
+        <result column="warning_start" property="warning_start"/>
+        <result property="warning_end" column="warning_end"/>
+        <association property="video" column="video_id" select="getVideo" javaType="com.cnsoft.counting.bean.Video"/>
+    </resultMap>
+
     <sql id="Example_Where_Clause">
         <where>
             <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -69,8 +88,22 @@
     id, video_id, warning_start, warning_end
   </sql>
     <select id="selectByVideo" resultMap="BaseResultMap">
-    select * from warninginfo where video_id=#{video_id}
+    select * from warning_info where video_id=#{video_id}
   </select>
+
+    <select id="selectWarningsAndVideo" resultMap="warning2video">
+        select * from warning_info;
+    </select>
+    <select id="getVideo" resultType="com.cnsoft.counting.bean.Video" parameterType="java.lang.String">
+        select * from video where id=#{video_id};
+    </select>
+<!--    <select id="selectWarningsAndVideo" resultMap="warnAndVideo">-->
+<!--        select video.captured_spot,video.captured_time,warning_info.video_id,warning_info.warning_start,warning_info.warning_end-->
+<!--        from video warning_info-->
+<!--        join video warning_info on video.id=warning_info.video_id-->
+
+<!--    </select>-->
+
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />

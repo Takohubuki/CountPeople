@@ -35,26 +35,28 @@
     </div>
     <div class="row">
         <div class="embed-responsive embed-responsive-16by9">
-            <video class="embed-responsive-item" src="${video.path}"></video>
+            <video class="embed-responsive-item" src="${video.path}">
+                <source href="${video.path}">
+            </video>
         </div>
     </div>
     <div class="row">
         <div id="warning-info" class="col-md-6">
             拍摄时间：${video.captured_time}<br>
             拍摄地点：${video.captured_spot}<br>
-            <c:if test="${warning_info == null}">
+            <c:if test="${warninglist == null}">
                 当前视频没有异常
             </c:if>
-            <c:if test="${warning_info != null}">
+            <c:if test="${warninglist != null}">
                 当前视频异常<br>
-                有${fn:length(warninglist)}个异常：
+                有${fn:length(warninglist)}个异常：<br>
                 <c:forEach var="warninglist" items="${warninglist}">
                     ${warninglist.warning_start}--${warninglist.warning_end}<br>
                 </c:forEach>
             </c:if>
         </div>
         <div class="col-md-6">
-            <a href="/change/history" class="btn btm-primary">查看历史警报信息</a>
+            <a href="/change/history" class="btn btn-primary btn-lg" role="button">查看历史警报信息</a>
         </div>
     </div>
 </div>

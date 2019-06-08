@@ -27,4 +27,7 @@ public interface WarningInfoMapper {
     int updateByPrimaryKeySelective(WarningInfo record);
 
     int updateByPrimaryKey(WarningInfo record);
+
+
+    List<WarningInfo> selectWarningsAndVideo();
 }

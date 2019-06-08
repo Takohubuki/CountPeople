@@ -9,6 +9,26 @@ public class WarningInfo {
 
     private String warning_end;
 
+    private Video video;
+
+    public Video getVideo() {
+        return video;
+    }
+
+    @Override
+    public String toString() {
+        return "" +
+                id + "：" +
+                "视频ID'" + video_id + '\'' +
+                ", 异常开始时间：'" + warning_start + '\'' +
+                ", 异常结束时间：'" + warning_end + '\'' +
+                ",\n" + video;
+    }
+
+    public void setVideo(Video video) {
+        this.video = video;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -8,6 +8,16 @@
     <result column="captured_time" jdbcType="TIMESTAMP" property="captured_time" />
     <result column="captured_spot" jdbcType="VARCHAR" property="captured_spot" />
   </resultMap>
+
+<!--    <resultMap id="warnAndVideo" type="com.cnsoft.counting.bean.WarningInfo">-->
+<!--        <id column="id" property="id"/>-->
+<!--        <result column="video_id" property="video_id"/>-->
+<!--        <collection property="warningInfos" column="video_id" ofType="com.cnsoft.counting.bean.WarningInfo">-->
+<!--            <id property="id" column="video_id"/>-->
+<!--            <result property="captured_spot" column="captured_spot"/>-->
+<!--            <result property="captured_time" column="captured_time"/>-->
+<!--        </collection>-->
+<!--    </resultMap>-->
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -70,9 +80,16 @@
     id, path, threshold, captured_time, captured_spot
   </sql>
 
+
+<!--    <select id="selectWarningsAndVideo" resultMap="warnAndVideo">-->
+<!--        select video.captured_spot,video.captured_time,warning_info.video_id,warning_info.warning_start,warning_info.warning_end-->
+<!--        from video warning_info-->
+<!--        join video warning_info on video.id=warning_info.video_id-->
+
+<!--    </select>-->
   <select id="selectByTimeAndSpot" resultType="com.cnsoft.counting.bean.Video">
     select
-        path,captured_time
+        *
     from
         video
     where

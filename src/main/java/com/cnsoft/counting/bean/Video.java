@@ -1,6 +1,7 @@
 package com.cnsoft.counting.bean;
 
 import java.util.Date;
+import java.util.List;
 
 public class Video {
     private String id;
@@ -12,6 +13,25 @@ public class Video {
     private Date captured_time;
 
     private String captured_spot;
+
+    @Override
+    public String toString() {
+        return
+
+                "\n阈值：" + threshold +
+                ", 拍摄时间：" + captured_time +
+                ", 拍摄地点：'" + captured_spot;
+    }
+
+    private List<WarningInfo> warningInfos;
+
+    public List<WarningInfo> getWarningInfos() {
+        return warningInfos;
+    }
+
+    public void setWarningInfos(List<WarningInfo> warningInfos) {
+        this.warningInfos = warningInfos;
+    }
 
     public String getId() {
         return id;

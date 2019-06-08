@@ -3,6 +3,8 @@ package com.cnsoft.counting.mappers;
 import com.cnsoft.counting.bean.Video;
 import com.cnsoft.counting.bean.VideoExample;
 import java.util.List;
+
+import com.cnsoft.counting.bean.WarningInfo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
@@ -31,4 +33,6 @@ public interface VideoMapper {
     int updateByPrimaryKey(Video record);
 
     Video selectByTimeAndSpot(String spot);
+
+    List<Video> selectWarningsAndVideo();
 }
