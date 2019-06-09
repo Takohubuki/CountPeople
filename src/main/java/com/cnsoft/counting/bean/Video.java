@@ -1,5 +1,6 @@
 package com.cnsoft.counting.bean;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -15,9 +16,12 @@ public class Video {
 
     private String captured_spot;
 
+    private String captured_time_s;
+
+
     @Override
     public String toString() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH-mm");
         String format = sdf.format(captured_time);
         return
 
@@ -74,5 +78,13 @@ public class Video {
 
     public void setCaptured_spot(String captured_spot) {
         this.captured_spot = captured_spot == null ? null : captured_spot.trim();
+    }
+
+    public void setCaptured_time_s(String captured_time_s) {
+        this.captured_time_s = captured_time_s;
+    }
+
+    public String getCaptured_time_s() {
+        return captured_time_s;
     }
 }

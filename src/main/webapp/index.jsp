@@ -46,7 +46,7 @@
     </div>
     <div class="row">
         <div id="warning-info" class="col-md-6">
-            拍摄时间：${video.captured_time}<br>
+            拍摄时间：${video.captured_time_s}<br>
             拍摄地点：${video.captured_spot}<br>
             <c:if test="${warninglist == null}">
 
