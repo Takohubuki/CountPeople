@@ -20,8 +20,8 @@ public class WarningInfo {
         return "" +
                 id + "：" +
                 "视频ID'" + video_id + '\'' +
-                ", 异常开始时间：'" + warning_start + '\'' +
-                ", 异常结束时间：'" + warning_end + '\'' +
+                ", 异常时间段：" + warning_start +
+                "--" + warning_end +
                 ",\n" + video;
     }
 

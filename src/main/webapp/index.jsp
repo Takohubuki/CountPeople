@@ -35,7 +35,9 @@
     </div>
     <div class="row">
         <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="${video.path}" allowfullscreen></iframe>
+            <video class="embed-responsive-item" src="${video.path}" allowfullscreen>
+                <source src="${video.path}" type="video/mp4"/>
+            </video>
         </div>
 <%--            <video class="embed-responsive-item" src="${video.path}">--%>
 <%--                <source href="${video.path}">--%>
@@ -47,11 +49,11 @@
             拍摄时间：${video.captured_time}<br>
             拍摄地点：${video.captured_spot}<br>
             <c:if test="${warninglist == null}">
-                当前视频没有异常
+
             </c:if>
             <c:if test="${warninglist != null}">
                 当前视频异常<br>
-                有${fn:length(warninglist)}个异常：<br>
+                有${fn:length(warninglist)}段异常时间：<br>
                 <c:forEach var="warninglist" items="${warninglist}">
                     ${warninglist.warning_start}--${warninglist.warning_end}<br>
                 </c:forEach>

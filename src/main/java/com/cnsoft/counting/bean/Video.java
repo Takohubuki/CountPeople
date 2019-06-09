@@ -1,5 +1,6 @@
 package com.cnsoft.counting.bean;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -16,10 +17,12 @@ public class Video {
 
     @Override
     public String toString() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String format = sdf.format(captured_time);
         return
 
                 "\n阈值：" + threshold +
-                ", 拍摄时间：" + captured_time +
+                ", 拍摄时间：" + format +
                 ", 拍摄地点：'" + captured_spot;
     }
 
