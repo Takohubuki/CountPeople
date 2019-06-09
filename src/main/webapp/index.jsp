@@ -35,7 +35,7 @@
     </div>
     <div class="row">
         <div class="embed-responsive embed-responsive-16by9">
-            <video class="embed-responsive-item" src="${video.path}" allowfullscreen>
+            <video class="embed-responsive-item" src="${video.path}" allowfullscreen autoplay="autoplay" controls="controls">
                 <source src="${video.path}" type="video/mp4"/>
             </video>
         </div>
