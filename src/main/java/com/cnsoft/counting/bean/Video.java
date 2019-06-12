@@ -27,7 +27,7 @@ public class Video {
 
                 "\n阈值：" + threshold +
                 ", 拍摄时间：" + format +
-                ", 拍摄地点：'" + captured_spot;
+                ", 拍摄地点：" + captured_spot;
     }
 
     private List<WarningInfo> warningInfos;

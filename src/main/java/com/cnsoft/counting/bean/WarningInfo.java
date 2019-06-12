@@ -9,6 +9,8 @@ public class WarningInfo {
 
     private String warning_end;
 
+    private String warning_time;
+
     private Video video;
 
     public Video getVideo() {
@@ -20,9 +22,16 @@ public class WarningInfo {
         return "" +
                 id + "：" +
                 "视频ID'" + video_id + '\'' +
-                ", 异常时间段：" + warning_start +
-                "--" + warning_end +
+                ", 异常时间：" + warning_time +
                 ",\n" + video;
+    }
+
+    public String getWarning_time() {
+        return warning_time;
+    }
+
+    public void setWarning_time(String warning_time) {
+        this.warning_time = warning_time;
     }
 
     public void setVideo(Video video) {

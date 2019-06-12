@@ -53,9 +53,9 @@
             </c:if>
             <c:if test="${warninglist != null}">
                 当前视频异常<br>
-                有${fn:length(warninglist)}段异常时间：<br>
+                有${fn:length(warninglist)}个异常时间：<br>
                 <c:forEach var="warninglist" items="${warninglist}">
-                    ${warninglist.warning_start}--${warninglist.warning_end}<br>
+                    ${warninglist.warning_time}<br>
                 </c:forEach>
             </c:if>
         </div>
