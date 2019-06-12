@@ -65,8 +65,18 @@ public class VideoChange {
     }
 
     @RequestMapping("/history")
-    public String history(HttpSession session){
+    public String history(HttpSession session) throws ParseException {
         List<WarningInfo> warningInfos = warningInfoMapper.selectWarningsAndVideo();
+//        for (WarningInfo w:
+//             warningInfos) {
+//            w.getVideo().setCaptured_time_s(changePattern(w.getVideo().getCaptured_time()));
+//        }
+        for (WarningInfo warningInfo : warningInfos) {
+            Video video = warningInfo.getVideo();
+            video.setCaptured_time_s(changePattern(video.getCaptured_time()));
+            warningInfo.setVideo(video);
+        }
+
         session.setAttribute("historywarning",warningInfos);
         return "history_warnings";
     }
@@ -78,7 +88,7 @@ public class VideoChange {
 
 
     public static String changePattern(Date date) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH-mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         String format = sdf.format(date);
         return format;
     }

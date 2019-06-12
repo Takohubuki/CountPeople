@@ -21,7 +21,7 @@
             <h1>White Give People Counting</h1>
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="margin-top: 20px">
         <div class="float-left">
             <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/change/spot01" role="button">地点一</a>
         </div>
@@ -44,7 +44,7 @@
 <%--            </video>--%>
 
     </div>
-    <div class="row">
+    <div class="row" style="margin-top: 20px">
         <div id="warning-info" class="col-md-6">
             拍摄时间：${video.captured_time_s}<br>
             拍摄地点：${video.captured_spot}<br>
