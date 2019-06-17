@@ -24,7 +24,8 @@
         <property name="jdbcUrl" value="jdbc:mysql:///countpeople?useSSL=false&amp;
                                                         serverTimezone=GMT%2B8&amp;
                                                         allowMultiQueries=true&amp;
-                                                        allowPublicKeyRetrieval=true"/>
+                                                        allowPublicKeyRetrieval=true&amp;
+                                                        autoReconnect=true"/>
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
     </bean>
 
